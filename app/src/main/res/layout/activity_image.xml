@@ -7,10 +7,10 @@
     android:gravity="center"
     tools:context=".ImageActivity">
 
-        <ImageView
-            android:id="@+id/large_image"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:adjustViewBounds="true"
-            android:scaleType="fitCenter"/>
+    <ImageView
+        android:id="@+id/large_image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:scaleType="fitCenter" />
 </LinearLayout>

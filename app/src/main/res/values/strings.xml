@@ -2,4 +2,11 @@
     <string name="app_name">Reddit</string>
     <string name="internet_disabled">Интернет отключен</string>
     <string name="some_problem">Неизвестная ошибка</string>
+    <string name="save">Сохранить</string>
+    <string name="save_image_title">Изображение</string>
+    <string name="save_image_description">Изображение скачанно с ресурса Reddit по адресу </string>
+    <string name="saved">Сохранено</string>
+    <string name="OK">Понятно</string>
+    <string name="rationale_permission">Без разрешения невозможно сохранить картинку</string>
+    <string name="get_permission_in_settings">Вы можете дать разрешение в настройках устройства</string>
 </resources>

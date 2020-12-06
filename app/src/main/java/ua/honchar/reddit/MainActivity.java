@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -49,6 +50,11 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         PostsAdapter adapter = new PostsAdapter(posts.getDataBean().getPosts());
         recycler.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         recycler.setAdapter(adapter);
+        adapter.setListener(url ->{
+            Intent intent = new Intent(this, ImageActivity.class);
+            intent.putExtra(ImageActivity.IMAGE_URL, url);
+            startActivity(intent);
+        });
     }
 
     private void getData() {

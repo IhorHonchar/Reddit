@@ -17,7 +17,7 @@ public class Posts implements Serializable {
         this.dataBean = dataBean;
     }
 
-    public static class DataBean {
+    public static class DataBean implements Serializable{
         @SerializedName("dist")
         private int dist;
 
@@ -41,7 +41,7 @@ public class Posts implements Serializable {
         }
 
 
-        public static class Post {
+        public static class Post implements Serializable{
 
             @SerializedName("data")
             private Data data;
@@ -54,7 +54,7 @@ public class Posts implements Serializable {
                 this.data = data;
             }
 
-            public static class Data {
+            public static class Data implements Serializable{
 
                 @SerializedName("author")
                 private String author;

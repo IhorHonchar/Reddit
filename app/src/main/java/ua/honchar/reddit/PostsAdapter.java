@@ -1,8 +1,5 @@
 package ua.honchar.reddit;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.os.AsyncTask;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -13,7 +10,6 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -33,6 +29,16 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
     private TextView posted;
     private ImageView thumbnail;
     private DownloadImageTask downloadImage;
+    private OnImageClickListener listener;
+
+    public interface OnImageClickListener{
+        public void onClick(String url);
+    }
+
+    public void setListener(OnImageClickListener listener){
+        this.listener = listener;
+    }
+
 
     public PostsAdapter(List<Posts.DataBean.Post> posts) {
         this.list.addAll(posts);
@@ -69,6 +75,12 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
         comments.setText(num_comments);
         posted.setText(getTimePassed(post.getData().getPosted()));
         downloadImage.execute(post.getData().getThumbnail_url());
+
+        thumbnail.setOnClickListener(view -> {
+            if (listener != null){
+                listener.onClick(post.getData().getThumbnail_url());
+            }
+        });
     }
 
     private String getTimePassed(long seconds){
@@ -126,35 +138,10 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         CardView cv;
+
         public ViewHolder(@NonNull CardView itemView) {
             super(itemView);
             cv = itemView;
-        }
-    }
-
-    private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
-        ImageView bmImage;
-
-        public DownloadImageTask(ImageView bmImage) {
-            this.bmImage = bmImage;
-        }
-
-        @Override
-        protected Bitmap doInBackground(String... strings) {
-            String urldisplay = strings[0];
-            Bitmap mIcon11 = null;
-            try {
-                InputStream in = new java.net.URL(urldisplay).openStream();
-                mIcon11 = BitmapFactory.decodeStream(in);
-            } catch (Exception e) {
-                Log.e("Error", e.getMessage());
-                e.printStackTrace();
-            }
-            return mIcon11;
-        }
-
-        protected void onPostExecute(Bitmap result) {
-            bmImage.setImageBitmap(result);
         }
     }
 }

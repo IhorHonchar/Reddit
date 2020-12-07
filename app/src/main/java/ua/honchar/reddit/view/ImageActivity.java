@@ -1,4 +1,4 @@
-package ua.honchar.reddit;
+package ua.honchar.reddit.view;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -10,7 +10,6 @@ import android.Manifest;
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
-import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.Menu;
@@ -18,6 +17,9 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import ua.honchar.reddit.DownloadImageTask;
+import ua.honchar.reddit.R;
 
 public class ImageActivity extends AppCompatActivity {
 

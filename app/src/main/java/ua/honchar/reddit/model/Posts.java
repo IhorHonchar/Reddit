@@ -1,5 +1,8 @@
 package ua.honchar.reddit.model;
 
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.DiffUtil;
+
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
@@ -55,6 +58,11 @@ public class Posts implements Serializable {
             }
 
             public static class Data implements Serializable{
+                @SerializedName("id")
+                private String id;
+
+                @SerializedName("name")
+                private String name;
 
                 @SerializedName("author")
                 private String author;
@@ -73,6 +81,14 @@ public class Posts implements Serializable {
 
                 public long getPosted() {
                     return posted;
+                }
+
+                public String getName() {
+                    return name;
+                }
+
+                public void setName(String name) {
+                    this.name = name;
                 }
 
                 public void setPosted(long posted) {
@@ -110,6 +126,28 @@ public class Posts implements Serializable {
                 public void setTitle(String title) {
                     this.title = title;
                 }
+
+                public String getId() {
+                    return id;
+                }
+
+                public void setId(String id) {
+                    this.id = id;
+                }
+
+                public static final DiffUtil.ItemCallback<Post> CALLBACK = new DiffUtil.ItemCallback<Post>() {
+                    @Override
+                    public boolean areItemsTheSame(@NonNull Post oldItem, @NonNull Post newItem) {
+                        return oldItem.getData().getId() == newItem.getData().getId();
+                    }
+
+                    @Override
+                    public boolean areContentsTheSame(@NonNull Post oldItem, @NonNull Post newItem) {
+                        return oldItem.getData().getAuthor().equals(newItem.getData().getAuthor()) &&
+                                oldItem.getData().getNum_commets() == oldItem.getData().getNum_commets() &&
+                                oldItem.getData().getPosted() == newItem.getData().getPosted();
+                    }
+                };
             }
         }
     }

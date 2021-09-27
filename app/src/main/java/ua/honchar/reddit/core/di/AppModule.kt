@@ -10,26 +10,21 @@ import ua.honchar.reddit.RedditApp
 import ua.honchar.reddit.core.network.RedditApi
 import ua.honchar.reddit.domain.repository.remote.IRemoteRepository
 import ua.honchar.reddit.domain.repository.remote.RemoteRepository
+import ua.honchar.reddit.domain.usecase.ILoadTopPostsUseCase
+import ua.honchar.reddit.domain.usecase.LoadTopPostsUseCase
 
 object AppModule {
     fun get(app: RedditApp) = Kodein.Module(this@AppModule::class.java.simpleName) {
         import(androidCoreModule(app))
-        import(RetrofitModule.get())
-
-        applyApiModule()
-        applyRemoteRepositoryModule()
+        import(RemoteModule.get())
 
         applyDaoModule()
         applyLocalRepositoryModule()
+
+        applyUseCaseModule()
     }
 
-    private fun Kodein.Builder.applyApiModule() {
-        bind<RedditApi>() with singleton { instance<Retrofit>().create(RedditApi::class.java) }
-    }
 
-    private fun Kodein.Builder.applyRemoteRepositoryModule() {
-        bind<IRemoteRepository>() with singleton { RemoteRepository(instance()) }
-    }
 
     private fun Kodein.Builder.applyDaoModule(){
 
@@ -37,5 +32,9 @@ object AppModule {
 
     private fun Kodein.Builder.applyLocalRepositoryModule(){
 
+    }
+
+    private fun Kodein.Builder.applyUseCaseModule(){
+        bind<ILoadTopPostsUseCase>() with singleton { LoadTopPostsUseCase(instance(), instance()) }
     }
 }

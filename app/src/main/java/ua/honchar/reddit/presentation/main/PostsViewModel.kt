@@ -4,6 +4,8 @@ import android.content.res.Resources
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.distinctUntilChanged
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 import ua.honchar.reddit.core.base.BaseViewModel
 import ua.honchar.reddit.domain.model.PostModelView
 import ua.honchar.reddit.domain.usecase.ILoadTopPostsUseCase
@@ -19,10 +21,12 @@ class PostsViewModel(
 
     fun checkPosts(): LiveData<List<PostModelView>> = postsLiveData.distinctUntilChanged()
 
-
-    init {
-        loadTopPostsUseCase.loadPosts().subscribe({
-              postsLiveData.postValue(it)
-        }, ::handleError).unsubscribeOnCleared()
+    fun loadPosts() {
+        loadTopPostsUseCase.loadPosts()
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({
+                postsLiveData.postValue(it)
+            }, ::handleError).unsubscribeOnCleared()
     }
 }

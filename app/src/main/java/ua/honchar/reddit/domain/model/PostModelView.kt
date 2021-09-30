@@ -8,6 +8,6 @@ data class PostModelView(
     val thumbnail: String,
     val numComments: Int,
     val created: Long,
-    val ratio: Int,
+    val ratio: Double,
     val ups: Int
 )

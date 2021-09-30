@@ -1,9 +1,12 @@
 package ua.honchar.reddit.core.di
 
+import androidx.lifecycle.ViewModelProvider
 import org.kodein.di.Kodein
 import org.kodein.di.android.androidCoreModule
+import org.kodein.di.direct
 import org.kodein.di.generic.bind
 import org.kodein.di.generic.instance
+import org.kodein.di.generic.provider
 import org.kodein.di.generic.singleton
 import retrofit2.Retrofit
 import ua.honchar.reddit.RedditApp
@@ -17,21 +20,14 @@ object AppModule {
     fun get(app: RedditApp) = Kodein.Module(this@AppModule::class.java.simpleName) {
         import(androidCoreModule(app))
         import(RemoteModule.get())
+        import(LocalModule.get())
 
-        applyDaoModule()
-        applyLocalRepositoryModule()
+
+        bind() from provider {
+            app.resources
+        }
 
         applyUseCaseModule()
-    }
-
-
-
-    private fun Kodein.Builder.applyDaoModule(){
-
-    }
-
-    private fun Kodein.Builder.applyLocalRepositoryModule(){
-
     }
 
     private fun Kodein.Builder.applyUseCaseModule(){

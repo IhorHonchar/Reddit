@@ -6,6 +6,6 @@ import ua.honchar.reddit.domain.model.PostsResponseModel
 
 interface RedditApi {
 
-    @GET("/top")
+    @GET("top.json")
     fun fetchPosts(): Single<PostsResponseModel>
 }

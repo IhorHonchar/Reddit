@@ -2,13 +2,13 @@ package ua.honchar.reddit.domain.usecase
 
 import io.reactivex.Single
 import ua.honchar.reddit.domain.model.PostModelView
-import ua.honchar.reddit.domain.repository.local.LocalRepository
-import ua.honchar.reddit.domain.repository.remote.RemoteRepository
+import ua.honchar.reddit.domain.repository.local.ILocalRepository
+import ua.honchar.reddit.domain.repository.remote.IRemoteRepository
 
 class LoadTopPostsUseCase(
-    private val remoteRepository: RemoteRepository,
-    private val localRepository: LocalRepository
-): ILoadTopPostsUseCase {
+    private val remoteRepository: IRemoteRepository,
+    private val localRepository: ILocalRepository
+) : ILoadTopPostsUseCase {
 
     override fun loadPosts(): Single<List<PostModelView>> {
         return remoteRepository.fetchPosts().map {

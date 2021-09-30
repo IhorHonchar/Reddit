@@ -32,6 +32,6 @@ data class PostData(
     @SerializedName("created_utc")
     val created: Long? = null,
     @SerializedName("upvote_ratio")
-    val ratio: Int? = null,
+    val ratio: Double? = null,
     val ups: Int? = null
 )

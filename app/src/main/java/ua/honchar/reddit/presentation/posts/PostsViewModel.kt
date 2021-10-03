@@ -1,4 +1,4 @@
-package ua.honchar.reddit.presentation.main
+package ua.honchar.reddit.presentation.posts
 
 import android.content.res.Resources
 import androidx.lifecycle.LiveData
@@ -6,7 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.distinctUntilChanged
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
-import ua.honchar.reddit.core.base.BaseViewModel
+import ua.honchar.reddit.core.base.presentation.BaseViewModel
 import ua.honchar.reddit.domain.model.PostModelView
 import ua.honchar.reddit.domain.usecase.ILoadTopPostsUseCase
 

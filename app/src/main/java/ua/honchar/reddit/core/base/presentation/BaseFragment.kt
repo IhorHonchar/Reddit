@@ -1,4 +1,4 @@
-package ua.honchar.reddit.core.base
+package ua.honchar.reddit.core.base.presentation
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,15 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import androidx.viewbinding.ViewBinding
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.closestKodein
-import org.kodein.di.direct
-import org.kodein.di.generic.instance
 
 abstract class BaseFragment<B: ViewBinding>: Fragment(), KodeinAware {
 

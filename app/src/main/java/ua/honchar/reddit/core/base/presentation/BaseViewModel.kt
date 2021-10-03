@@ -1,4 +1,4 @@
-package ua.honchar.reddit.core.base
+package ua.honchar.reddit.core.base.presentation
 
 import android.content.res.Resources
 import androidx.lifecycle.LiveData

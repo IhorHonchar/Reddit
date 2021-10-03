@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/ups"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:drawableTopCompat="@drawable/ic_ups"
+                tools:text="27.5k"
+                android:textColor="@color/black"
+                />
+
+            <TextView
+                android:id="@+id/user_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@id/ups"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/ups"
+                android:textColor="@color/black"
+                android:textSize="@dimen/small_text_size"
+                tools:text="Posted by u/user_name 4 hours ago"
+                app:layout_constraintBottom_toBottomOf="@id/ups"
+                android:layout_marginStart="@dimen/default_margin"
+                />
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/ups"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="@dimen/default_margin"
+                android:textColor="@color/black"
+                tools:text="Someone painted the cement barriers into a giant Toblerone."
+                />
+
+            <ImageView
+                android:id="@+id/thumbnail"
+                android:layout_width="match_parent"
+                android:layout_height="230dp"
+                app:layout_constraintTop_toBottomOf="@id/title"
+                android:layout_marginTop="@dimen/default_margin"
+                />
+
+            <TextView
+                android:id="@+id/comments"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="@id/thumbnail"
+                app:layout_constraintTop_toBottomOf="@id/thumbnail"
+                android:layout_marginTop="@dimen/default_margin"
+                app:drawableLeftCompat="@drawable/ic_comments"
+                android:drawablePadding="10dp"
+                android:textColor="@color/black"
+                tools:text="27k"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</layout>

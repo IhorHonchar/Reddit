@@ -5,9 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.closestKodein
-import org.kodein.di.android.retainedKodein
 import ua.honchar.reddit.R
-import ua.honchar.reddit.presentation.main.PostsFragment
+import ua.honchar.reddit.presentation.posts.PostsFragment
 
 class MainActivity : AppCompatActivity(), KodeinAware {
 

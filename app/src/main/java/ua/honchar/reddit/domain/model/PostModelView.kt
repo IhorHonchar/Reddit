@@ -11,5 +11,6 @@ data class PostModelView(
     val numComments: Int,
     val created: Long,
     val ratio: Double,
-    val ups: Int
+    val ups: Int,
+    val permalink: String
 ): IAdapterItem

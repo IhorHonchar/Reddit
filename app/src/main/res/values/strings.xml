@@ -3,4 +3,6 @@
     <string name="error_server_connection">There are some problems with connection. Please, check your network.</string>
     <string name="no_internet_connection">No Interner connection</string>
     <string name="some_wrong">Some things wrong</string>
+
+    <string name="user_name_template">Posted by u/%s %s ago</string>
 </resources>

@@ -13,7 +13,8 @@ fun PostData.toModelView(): PostModelView {
         numComments = numComments.orZero(),
         created = created.orZero(),
         ratio = ratio.orZero(),
-        ups = ups.orZero()
+        ups = ups.orZero(),
+        permalink = permalink.orEmpty()
     )
 }
 

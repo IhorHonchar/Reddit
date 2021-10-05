@@ -1,18 +1,13 @@
 package ua.honchar.reddit.core.di
 
-import androidx.lifecycle.ViewModelProvider
 import org.kodein.di.Kodein
 import org.kodein.di.android.androidCoreModule
-import org.kodein.di.direct
 import org.kodein.di.generic.bind
 import org.kodein.di.generic.instance
 import org.kodein.di.generic.provider
 import org.kodein.di.generic.singleton
-import retrofit2.Retrofit
 import ua.honchar.reddit.RedditApp
-import ua.honchar.reddit.core.network.RedditApi
-import ua.honchar.reddit.domain.repository.remote.IRemoteRepository
-import ua.honchar.reddit.domain.repository.remote.RemoteRepository
+import ua.honchar.reddit.core.util.ImageLoadingUtil
 import ua.honchar.reddit.domain.usecase.ILoadTopPostsUseCase
 import ua.honchar.reddit.domain.usecase.LoadTopPostsUseCase
 
@@ -25,6 +20,10 @@ object AppModule {
 
         bind() from provider {
             app.resources
+        }
+
+        bind() from singleton {
+            ImageLoadingUtil(instance())
         }
 
         applyUseCaseModule()
